@@ -1,0 +1,75 @@
+module hello {
+    yang-version 1;
+    namespace "urn:opendaylight:params:xml:ns:yang:hello";
+    prefix "hello";
+
+    revision "2017-08-03" {
+        description "Initial revision of hello model";
+    }
+
+    container helloWorld {
+            leaf counter {
+                    type uint32;
+                    config true;
+                    default 100;
+            }
+
+            leaf value {
+                    type string;
+                    config false;
+                    mandatory false;
+            }
+            leaf neutral {
+                type uint32;
+            }
+    }
+
+
+    rpc hello-world {
+            input {
+                    leaf strin {
+                            type string;
+                    }
+            }
+            output {
+                    leaf greating {
+                            type string;
+                    }
+            }
+    }
+
+    rpc noinput-output {
+            description "no input and output rpc";
+    }
+
+    rpc hello-world-write {
+            input {
+                    leaf strin {
+                            type string;
+                    }
+            }
+            output {
+                    leaf strout {
+                            type string;
+                    }
+            }
+    }
+
+    rpc hello-world-read {
+            input {
+                    leaf strin {
+                            type string;
+                    }
+            }
+            output {
+                    leaf strout {
+                            type string;
+                    }
+            }
+    }
+
+    notification multipleOfTens {
+            description
+            "indicates that the counter has reached multiple of 10.";
+    }
+}
